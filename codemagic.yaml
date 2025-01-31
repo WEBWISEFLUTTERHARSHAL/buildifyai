@@ -3,9 +3,6 @@ workflows:
     name: iOS Simulator Build
     instance_type: mac_mini_m1
     environment:
-      xcode: 16.2
-      ios_signing:
-        distribution_type: development
       vars:
         XCODE_WORKSPACE: "ios/Runner.xcworkspace"
         XCODE_SCHEME: "Runner"
