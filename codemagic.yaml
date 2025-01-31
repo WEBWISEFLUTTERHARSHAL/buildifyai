@@ -14,7 +14,7 @@ workflows:
           -scheme $XCODE_SCHEME \
           -sdk iphonesimulator \
           -configuration Release \
-          -destination "platform=iOS Simulator, id=4DB945BB-B366-4387-92E4-365597009B20, OS=18.2, name=iPhone 16" \
+          -destination 'id=4DB945BB-B366-4387-92E4-365597009B20' \
           -archivePath build/ios-simulator \
           clean archive
     artifacts:
