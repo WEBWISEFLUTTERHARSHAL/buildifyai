@@ -21,9 +21,6 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.7.0'   # You can try 'latest' or '3.7.0'
-
-      - name: Install dependencies
-        run: flutter pub get
       
       - name: Build iOS Simulator
         run: flutter build ios --simulator --no-codesign
