@@ -1,29 +1,32 @@
-name: Flutter iOS Simulator Build
+name: Flutter iOS Simulation Build
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main, master ]
   pull_request:
-    branches:
-      - main
+    branches: [ main, master ]
 
 jobs:
-  build:
+  build-ios:
     runs-on: macos-latest
-
+    
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Set up Flutter
-        uses: subosito/flutter-action@v2
-        with:
-          flutter-version: '3.8.0'  # Or try a later version that supports Dart SDK 3.5.2+
-
-      - name: Install dependencies
-        run: flutter pub get
-
-      - name: Build iOS Simulator
-        run: flutter build ios --simulator --no-codesign
-
+    - uses: actions/checkout@v3
+    
+    - name: Set up Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '3.16.0'
+        channel: 'stable'
+    
+    - name: Get dependencies
+      run: flutter pub get
+    
+    - name: Build iOS simulator
+      run: flutter build ios --simulator --debug
+    
+    - name: Upload iOS simulator build
+      uses: actions/upload-artifact@v3
+      with:
+        name: ios-simulator-build
+        path: build/ios/iphonesimulator
