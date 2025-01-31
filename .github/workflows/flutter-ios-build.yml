@@ -10,17 +10,20 @@ on:
 
 jobs:
   build:
-    runs-on: macos-latest  # Use macOS runner for iOS
-    
+    runs-on: macos-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-        
-      # Step 2: Set up Flutter (using 3.7.0 or other stable version)
+
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.7.0'   # You can try 'latest' or '3.7.0'
-      
+          flutter-version: '3.8.0'  # Or try a later version that supports Dart SDK 3.5.2+
+
+      - name: Install dependencies
+        run: flutter pub get
+
       - name: Build iOS Simulator
         run: flutter build ios --simulator --no-codesign
+
