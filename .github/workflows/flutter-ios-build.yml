@@ -17,12 +17,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
         
-      # Step 2: Set up Flutter (latest stable version)
+      # Step 2: Set up Flutter (using a specific version or 'latest' keyword)
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: 'latest'   # Automatically use the latest stable Flutter version
-
+          flutter-version: '3.7.0'  # Specify a version like '3.7.0' or 'latest'
+          
       # Step 3: Install dependencies
       - name: Install dependencies
         run: flutter pub get
