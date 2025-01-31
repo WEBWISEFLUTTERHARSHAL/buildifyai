@@ -1,0 +1,32 @@
+name: Flutter iOS Simulator Build
+
+on:
+  push:
+    branches:
+      - main        # Trigger on push to main branch
+  pull_request:
+    branches:
+      - main        # Trigger on PR to main branch
+
+jobs:
+  build:
+    runs-on: macos-latest    # macOS runner used to build iOS
+    
+    steps:
+      # Step 1: Checkout the code
+      - name: Checkout code
+        uses: actions/checkout@v3
+        
+      # Step 2: Set up Flutter (latest stable version)
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 'latest'   # Automatically use the latest stable Flutter version
+
+      # Step 3: Install dependencies
+      - name: Install dependencies
+        run: flutter pub get
+      
+      # Step 4: Build for iOS Simulator
+      - name: Build iOS Simulator
+        run: flutter build ios --simulator --no-codesign
