@@ -3,30 +3,27 @@ name: Flutter iOS Simulator Build
 on:
   push:
     branches:
-      - main        # Trigger on push to main branch
+      - main
   pull_request:
     branches:
-      - main        # Trigger on PR to main branch
+      - main
 
 jobs:
   build:
-    runs-on: macos-latest    # macOS runner used to build iOS
+    runs-on: macos-latest  # Use macOS runner for iOS
     
     steps:
-      # Step 1: Checkout the code
       - name: Checkout code
         uses: actions/checkout@v3
         
-      # Step 2: Set up Flutter (with the correct version, e.g., 3.5.2)
+      # Step 2: Set up Flutter (using 3.7.0 or other stable version)
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.5.2'   # Specify the version required by Buildify_AI
+          flutter-version: '3.7.0'   # You can try 'latest' or '3.7.0'
 
-      # Step 3: Install dependencies
       - name: Install dependencies
         run: flutter pub get
       
-      # Step 4: Build for iOS Simulator
       - name: Build iOS Simulator
         run: flutter build ios --simulator --no-codesign
