@@ -17,12 +17,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
         
-      # Step 2: Set up Flutter (using a specific version or 'latest' keyword)
+      # Step 2: Set up Flutter (with the correct version, e.g., 3.5.2)
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.7.0'  # Specify a version like '3.7.0' or 'latest'
-          
+          flutter-version: '3.5.2'   # Specify the version required by Buildify_AI
+
       # Step 3: Install dependencies
       - name: Install dependencies
         run: flutter pub get
